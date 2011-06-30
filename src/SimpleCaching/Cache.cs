@@ -5,7 +5,7 @@ namespace SimpleCaching
     public abstract class Cache
     {
         private string cacheValue;
-        private static readonly object lockObject = new object();
+        private static readonly object LockObject = new object();
 
         protected Cache()
         {
@@ -18,7 +18,7 @@ namespace SimpleCaching
         {
             if (TheCacheIsStillValid()) return;
 
-            lock (lockObject)
+            lock (LockObject)
                 if (TheCacheIsInvalid())
                 {
                     SetupTheCache();
