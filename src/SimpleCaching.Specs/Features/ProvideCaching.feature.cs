@@ -68,7 +68,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 9
  testRunner.When("I call the GetAll method on the product repository class");
 #line 10
- testRunner.Then("the base product repository class should be called once");
+ testRunner.Then("the base product repository class should be called 1 time");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
