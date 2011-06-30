@@ -55,10 +55,10 @@ namespace SimpleCaching.Specs.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Can call a method on the base product repository")]
-        public virtual void CanCallAMethodOnTheBaseProductRepository()
+        [NUnit.Framework.DescriptionAttribute("Calling a method on a cached repository only once")]
+        public virtual void CallingAMethodOnACachedRepositoryOnlyOnce()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Can call a method on the base product repository", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calling a method on a cached repository only once", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
@@ -68,6 +68,27 @@ this.ScenarioSetup(scenarioInfo);
 #line 9
  testRunner.When("I call the GetAll method on the product repository class");
 #line 10
+ testRunner.Then("the base product repository class should be called 1 time");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Calling a method on a cached repository twice")]
+        public virtual void CallingAMethodOnACachedRepositoryTwice()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calling a method on a cached repository twice", ((string[])(null)));
+#line 12
+this.ScenarioSetup(scenarioInfo);
+#line 13
+ testRunner.Given("I have an instance of the product repository class");
+#line 14
+ testRunner.And("I have a cached product repository class");
+#line 15
+ testRunner.When("I call the GetAll method on the product repository class");
+#line 16
+ testRunner.And("I call the GetAll method on the product repository class");
+#line 17
  testRunner.Then("the base product repository class should be called 1 time");
 #line hidden
             testRunner.CollectScenarioErrors();

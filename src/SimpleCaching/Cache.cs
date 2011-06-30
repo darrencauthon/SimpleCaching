@@ -1,12 +1,16 @@
-﻿using System.Collections.Generic;
-
-namespace SimpleCaching
+﻿namespace SimpleCaching
 {
-    public class Cache
+    public abstract class Cache
     {
-        public IEnumerable<string> GetAll()
+        private bool hasBeenCalled;
+
+        public abstract void SetupTheCache();
+
+        public void CheckTheCache()
         {
-            return new string[] {};
+            if (hasBeenCalled) return;
+            hasBeenCalled = true;
+            SetupTheCache();
         }
     }
 }

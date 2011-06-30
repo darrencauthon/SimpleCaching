@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Moq;
 using TechTalk.SpecFlow;
 
@@ -40,15 +41,22 @@ namespace SimpleCaching.Specs.Steps
     public class CachedProductRepository : Cache, IProductRepository
     {
         private readonly Func<IProductRepository> productRepository;
+        private IList<string> products;
 
         public CachedProductRepository(Func<IProductRepository> productRepository)
         {
             this.productRepository = productRepository;
         }
 
+        public override void SetupTheCache()
+        {
+            products = productRepository().GetAll().ToList();
+        }
+
         public IEnumerable<string> GetAll()
         {
-            return productRepository().GetAll();
+            CheckTheCache();
+            return products;
         }
     }
 
