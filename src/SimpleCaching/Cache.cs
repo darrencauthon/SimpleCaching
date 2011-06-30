@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace SimpleCaching
 {
     public abstract class Cache
     {
         private string cacheValue;
+        private static readonly object lockObject = new object();
 
         protected Cache()
         {
@@ -16,10 +16,29 @@ namespace SimpleCaching
 
         public void CheckTheCache()
         {
-            var currentCacheValue = CacheInvalidator.GetCacheValue(this.GetType().GetInterfaces().First());
-            if (currentCacheValue == cacheValue) return;
-            SetupTheCache();
-            cacheValue = currentCacheValue;
+            if (TheCacheIsStillValid()) return;
+
+            lock (lockObject)
+                if (TheCacheIsInvalid())
+                {
+                    SetupTheCache();
+                    cacheValue = GetTheCurrentCacheValue();
+                }
+        }
+
+        private bool TheCacheIsStillValid()
+        {
+            return GetTheCurrentCacheValue() == cacheValue;
+        }
+
+        private bool TheCacheIsInvalid()
+        {
+            return TheCacheIsStillValid() == false;
+        }
+
+        private string GetTheCurrentCacheValue()
+        {
+            return CacheInvalidator.GetCacheValue(this.GetType().GetInterfaces().First());
         }
     }
 }
