@@ -1,16 +1,9 @@
-﻿using System.Linq;
-
-namespace SimpleCaching
+﻿namespace SimpleCaching
 {
     public abstract class Cache
     {
         private string cacheValue;
         private static readonly object LockObject = new object();
-
-        protected Cache()
-        {
-            cacheValue = CacheInvalidator.GetCacheValue(this.GetType());
-        }
 
         public abstract void SetupTheCache();
 
@@ -38,7 +31,7 @@ namespace SimpleCaching
 
         private string GetTheCurrentCacheValue()
         {
-            return CacheInvalidator.GetCacheValue(this.GetType().GetInterfaces().First());
+            return CacheInvalidator.GetCacheValue(this.GetType());
         }
     }
 }

@@ -22,7 +22,7 @@ Scenario: Calling a cached method, the cache is invalidated, and then the cached
 	Given I have an instance of the product repository class
 	And I have a cached product repository class
 	When I call the GetAll method on the product repository class
-	And the cache for IProductRepository is marked as invalid
+	And the cache for the product repository is marked as invalid
 	And I call the GetAll method on the product repository class
 	Then the base product repository class should be called 2 times
 

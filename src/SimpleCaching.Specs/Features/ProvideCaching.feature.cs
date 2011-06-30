@@ -117,7 +117,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 24
  testRunner.When("I call the GetAll method on the product repository class");
 #line 25
- testRunner.And("the cache for IProductRepository is marked as invalid");
+ testRunner.And("the cache for the product repository is marked as invalid");
 #line 26
  testRunner.And("I call the GetAll method on the product repository class");
 #line 27

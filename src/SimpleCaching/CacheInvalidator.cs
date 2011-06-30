@@ -5,23 +5,28 @@ namespace SimpleCaching
 {
     public static class CacheInvalidator
     {
-        private static readonly Dictionary<Type, string> dictionary;
+        private static readonly Dictionary<Type, string> CacheValues;
 
         static CacheInvalidator()
         {
-            dictionary = new Dictionary<Type, string>();
+            CacheValues = new Dictionary<Type, string>();
         }
 
         public static void MarkAsInvalid(Type type)
         {
-            dictionary[type] = Guid.NewGuid().ToString();
+            CacheValues[type] = GetANewCacheValue();
+        }
+
+        private static string GetANewCacheValue()
+        {
+            return Guid.NewGuid().ToString();
         }
 
         public static string GetCacheValue(Type type)
         {
-            if (dictionary.ContainsKey(type) == false)
-                dictionary[type] = Guid.NewGuid().ToString();
-            return dictionary[type];
+            if (CacheValues.ContainsKey(type) == false)
+                CacheValues[type] = GetANewCacheValue();
+            return CacheValues[type];
         }
     }
 }

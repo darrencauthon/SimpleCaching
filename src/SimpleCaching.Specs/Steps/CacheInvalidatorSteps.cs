@@ -5,10 +5,10 @@ namespace SimpleCaching.Specs.Steps
     [Binding]
     public class CacheInvalidatorSteps
     {
-        [When(@"the cache for IProductRepository is marked as invalid")]
+        [When(@"the cache for the product repository is marked as invalid")]
         public void WhenTheCacheForIProductRepositoryIsMarkedAsInvalid()
         {
-            CacheInvalidator.MarkAsInvalid(typeof (IProductRepository));
+            CacheInvalidator.MarkAsInvalid(typeof (CachedProductRepository));
         }
     }
 }
