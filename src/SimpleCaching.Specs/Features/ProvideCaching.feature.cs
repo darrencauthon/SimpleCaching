@@ -46,6 +46,7 @@ namespace SimpleCaching.Specs.Features
         public virtual void ScenarioSetup(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioStart(scenarioInfo);
+            this.FeatureBackground();
         }
         
         [NUnit.Framework.TearDownAttribute()]
@@ -54,20 +55,26 @@ namespace SimpleCaching.Specs.Features
             testRunner.OnScenarioEnd();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 6
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Calling a method on a cached repository only once")]
         public virtual void CallingAMethodOnACachedRepositoryOnlyOnce()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calling a method on a cached repository only once", ((string[])(null)));
-#line 6
-this.ScenarioSetup(scenarioInfo);
-#line 7
- testRunner.Given("I have an instance of the product repository class");
 #line 8
- testRunner.And("I have a cached product repository class");
+this.ScenarioSetup(scenarioInfo);
 #line 9
- testRunner.When("I call the GetAll method on the product repository class");
+ testRunner.Given("I have an instance of the product repository class");
 #line 10
+ testRunner.And("I have a cached product repository class");
+#line 11
+ testRunner.When("I call the GetAll method on the product repository class");
+#line 12
  testRunner.Then("the base product repository class should be called 1 time");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -78,18 +85,43 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void CallingAMethodOnACachedRepositoryTwice()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calling a method on a cached repository twice", ((string[])(null)));
-#line 12
-this.ScenarioSetup(scenarioInfo);
-#line 13
- testRunner.Given("I have an instance of the product repository class");
 #line 14
- testRunner.And("I have a cached product repository class");
+this.ScenarioSetup(scenarioInfo);
 #line 15
- testRunner.When("I call the GetAll method on the product repository class");
+ testRunner.Given("I have an instance of the product repository class");
 #line 16
- testRunner.And("I call the GetAll method on the product repository class");
+ testRunner.And("I have a cached product repository class");
 #line 17
+ testRunner.When("I call the GetAll method on the product repository class");
+#line 18
+ testRunner.And("I call the GetAll method on the product repository class");
+#line 19
  testRunner.Then("the base product repository class should be called 1 time");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Calling a cached method, the cache is invalidated, and then the cached repository" +
+            " is called again")]
+        public virtual void CallingACachedMethodTheCacheIsInvalidatedAndThenTheCachedRepositoryIsCalledAgain()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calling a cached method, the cache is invalidated, and then the cached repository" +
+                    " is called again", ((string[])(null)));
+#line 21
+this.ScenarioSetup(scenarioInfo);
+#line 22
+ testRunner.Given("I have an instance of the product repository class");
+#line 23
+ testRunner.And("I have a cached product repository class");
+#line 24
+ testRunner.When("I call the GetAll method on the product repository class");
+#line 25
+ testRunner.And("the cache for IProductRepository is marked as invalid");
+#line 26
+ testRunner.And("I call the GetAll method on the product repository class");
+#line 27
+ testRunner.Then("the base product repository class should be called 2 times");
 #line hidden
             testRunner.CollectScenarioErrors();
         }

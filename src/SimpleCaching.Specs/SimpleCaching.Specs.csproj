@@ -61,6 +61,7 @@
       <DependentUpon>ProvideCaching.feature</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\CacheInvalidatorSteps.cs" />
     <Compile Include="Steps\ProductRepositorySteps.cs" />
   </ItemGroup>
   <ItemGroup>
