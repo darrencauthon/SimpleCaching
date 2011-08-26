@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>SimpleCaching</id>
+    <version>1.0</version>
+    <authors>Darren Cauthon</authors>
+    <language>en-US</language>
+	<description>Offers simple caching scheme with very little code.</description>
+	<summary>Caching with two classes or less.</summary>
+    <projectUrl>https://github.com/darrencauthon/SimpleCaching</projectUrl>
+  </metadata>
+</package>
