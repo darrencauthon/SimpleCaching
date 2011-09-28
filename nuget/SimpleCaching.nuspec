@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>SimpleCaching</id>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <authors>Darren Cauthon</authors>
     <language>en-US</language>
 	<description>Offers simple caching scheme with very little code.</description>
