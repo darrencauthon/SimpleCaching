@@ -7,7 +7,7 @@
 
         public abstract void SetupTheCache();
 
-        public void CheckTheCache()
+        public virtual void CheckTheCache()
         {
             if (TheCacheIsStillValid()) return;
 
