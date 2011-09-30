@@ -38,7 +38,14 @@ A simple way to implement caching in your C# projects.  It was intended to be us
         }
         
         public Product FindById(string id){
+            CheckTheCache();
             return products.FirstOrDefault(x => x.Id == id);
         }
     }
+```
+
+###CacheInvalidator
+```c#
+    // this will cause the cache to be marked as invalid, causing SetupTheCache to be called again 
+    CacheInvalidator.MarkAsInvalid(typeof(CachedProductRepository));
 ```
