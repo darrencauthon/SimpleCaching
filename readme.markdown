@@ -31,7 +31,7 @@ A simple way to implement caching in your C# projects.  It was intended to be us
             products = accountRepository().All();
         }
         
-        public IEnumerable<Product>All(){
+        public IEnumerable<Product> All(){
             // this method on Cache will check the cache and run SetupTheCache if necessary
             CheckTheCache();
             return products;
